@@ -15,7 +15,8 @@ class taskController extends Controller
         $validated = $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'status' => 'required',
+            'status' => 'required|in:pending,in progress,completed',
+            'user_id' => 'required',
         ]);
 
         $task = task::create($validated);
@@ -33,6 +34,7 @@ class taskController extends Controller
             'title' => 'required',
             'description' => 'required',
             'status' => 'required',
+            'user_id' => 'required',
         ]);
 
         $task->update($validated);
